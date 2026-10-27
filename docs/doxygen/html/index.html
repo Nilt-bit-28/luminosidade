@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Monitoramento de luminosidade - KY-018: Monitoramento de luminosidade — STM32MP1 e KY-018</title>
+<title>Monitoramento de luminosidade - KY-018: Monitoramento de luminosidade - KY-018</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -69,12 +69,15 @@ $(function() {
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">Monitoramento de luminosidade — STM32MP1 e KY-018 </div></div>
+  <div class="headertitle"><div class="title">Monitoramento de luminosidade - KY-018 </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="md_README"></a> Projeto de Programação Aplicada: leitura de luminosidade para identificar entrada de luz no invólucro de uma carga. O programa C++ roda no Linux do kit STM32MP1, lê o ADC pela interface IIO e mostra contagens brutas no terminal em formato CSV.</p>
-<h1><a class="anchor" id="autotoc_md1"></a>
-Estado da entrega em 26/10/2026</h1>
+<div class="textblock"><p><a class="anchor" id="md_README"></a> Alunos Afonseca - Garcia - 1º TEN MS PQD Rivero </p>
+<h1><a class="anchor" id="autotoc_md0"></a>
+Monitoramento de luminosidade — STM32MP1 e KY-018</h1>
+<p>Projeto de Programação Aplicada: leitura de luminosidade para identificar entrada de luz no invólucro de uma carga. O programa C++ roda no Linux do kit STM32MP1, lê o ADC pela interface IIO e mostra contagens brutas no terminal em formato CSV.</p>
+<h2><a class="anchor" id="autotoc_md1"></a>
+Estado da entrega em 26/10/2026</h2>
 <ul>
 <li>Classe de leitura implementada, com comentários Doxygen e sem variáveis globais.</li>
 <li>Compilação cruzada realizada com a toolchain do professor.</li>
@@ -84,8 +87,8 @@ Estado da entrega em 26/10/2026</h1>
 <li>Alarme de abertura, envio UDP e interface gráfica são etapas futuras.</li>
 </ul>
 <p>O enunciado refere-se ao kit DK1. A imagem Linux do kit desta sessão contém <code>stm32mp157c-dk2.dtb</code>, utilizado no teste. Esse nome não deve ser aplicado automaticamente a outro kit ou imagem.</p>
-<h1><a class="anchor" id="autotoc_md2"></a>
-Circuito e alimentação</h1>
+<h2><a class="anchor" id="autotoc_md2"></a>
+Circuito e alimentação</h2>
 <p>Montar com a placa desligada e sem cabos USB. O enunciado pede enviar a foto da montagem desligada antes dos testes energizados.</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -99,8 +102,8 @@ Circuito e alimentação</h1>
 </table>
 <p>Conferir as marcações reais do módulo. Alimentar o sensor com <b>3,3 V</b>, nunca com 5 V. O módulo já contém o divisor resistivo.</p>
 <p>Alimentar o kit em <b>PWR_IN</b> com fonte USB-C adequada de <b>5 V / 3 A</b> e cabo compatível. A alimentação inicial pelo notebook foi detectada como 500 mA e gerou aviso de corrente insuficiente. Manter o cartão SD e as chaves na configuração recebida.</p>
-<h1><a class="anchor" id="autotoc_md3"></a>
-Arquivos e classes</h1>
+<h2><a class="anchor" id="autotoc_md3"></a>
+Arquivos e classes</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Arquivo   </th><th class="markdownTableHeadNone">Função    </th></tr>
@@ -126,8 +129,8 @@ Arquivos e classes</h1>
 <p><b><a class="el" href="classSensorLuminosidade.html" title="Le o valor bruto de um KY-018 pelo ADC exposto pelo Linux IIO. Nao converte para lux: isso requer cal...">SensorLuminosidade</a>:</b> guarda privadamente o caminho do arquivo ADC. Seu construtor recebe o caminho; <code>long ler() const</code> abre o arquivo, lê e retorna a contagem. Falha de leitura ou valor negativo gera <code>std::runtime_error</code>. O arquivo é reaberto a cada chamada e fechado automaticamente.</p>
 <p><b><a class="el" href="classAplicacao.html" title="Controla a demonstracao, sem variaveis globais.">Aplicacao</a>:</b> o método estático <code>executar(argc, argv)</code> verifica argumentos, cria o sensor, solicita leituras e imprime resultados. Entre as leituras há uma pausa de 500 ms; após a última amostra limitada não há pausa. Exceções são capturadas e mostradas. Retorno 0 indica sucesso; retorno 1 indica falha.</p>
 <p><b><a class="el" href="luminosidade_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="Ponto de entrada; delega a logica para a classe Aplicacao.">main()</a>:</b> apenas delega a execução à classe <a class="el" href="classAplicacao.html" title="Controla a demonstracao, sem variaveis globais.">Aplicacao</a>.</p>
-<h1><a class="anchor" id="autotoc_md4"></a>
-Dependências</h1>
+<h2><a class="anchor" id="autotoc_md4"></a>
+Dependências</h2>
 <ul>
 <li>Linux no computador de desenvolvimento: utilizado Ubuntu 24.04 no WSL 2.</li>
 <li>Bash e ferramentas básicas do Linux.</li>
@@ -136,18 +139,18 @@ Dependências</h1>
 <li>Opcional: VS Code com extensão WSL; g++ local para simulação; Doxygen para gerar HTML; OpenSSH/SCP para transferir pela rede.</li>
 </ul>
 <p>O SDK fica fora da pasta do projeto e não deve ser enviado ao Git.</p>
-<h1><a class="anchor" id="autotoc_md5"></a>
-Abrir no VS Code pelo Ubuntu</h1>
+<h2><a class="anchor" id="autotoc_md5"></a>
+Abrir no VS Code pelo Ubuntu</h2>
 <p>No terminal Ubuntu deste computador:</p>
 <div class="fragment"><div class="line">cd /home/felipe/stm32/luminosidade</div>
 <div class="line">code .</div>
 </div><!-- fragment --><p>Conferir <code>WSL: Ubuntu-24.04</code> no canto inferior esquerdo. Os arquivos nessa pasta são os utilizados para desenvolver. O ZIP entregue é uma cópia de backup.</p>
-<h1><a class="anchor" id="autotoc_md6"></a>
-Preparar o SDK em outro computador</h1>
+<h2><a class="anchor" id="autotoc_md6"></a>
+Preparar o SDK em outro computador</h2>
 <p>Extrair o pacote original pelo Linux, preservando permissões e links. Após posicionar o SDK no local definitivo, executar <code>relocate-sdk.sh</code> na raiz dele, conforme o manual do Buildroot.</p>
 <p>Na instalação deste computador, a extração pelo Windows omitiu links simbólicos e o pacote apresentava diretórios <code>usr</code> repetidos. Na cópia Linux utilizada foram restaurados os links do pacote original e executada a relocação. Se esse problema ocorrer novamente, corrigir a extração antes de compilar; não trocar a versão da toolchain sem verificar a compatibilidade com o kit.</p>
-<h1><a class="anchor" id="autotoc_md7"></a>
-Compilar para a placa</h1>
+<h2><a class="anchor" id="autotoc_md7"></a>
+Compilar para a placa</h2>
 <p>O SDK é procurado por padrão em <code>$HOME/stm32/sdk</code>.</p>
 <div class="fragment"><div class="line">cd /home/felipe/stm32/luminosidade</div>
 <div class="line">bash compilar.sh</div>
@@ -156,8 +159,8 @@ Compilar para a placa</h1>
 </div><!-- fragment --><p>O script verifica o compilador e o sysroot, compila em um arquivo temporário e só substitui <code>build/luminosidade</code> após sucesso. Se a compilação falhar, corrigir o erro antes de transferir; não enviar um executável antigo por engano.</p>
 <p>No VS Code, <b>Ctrl+Shift+B</b> chama essa mesma tarefa. Apenas compila: não envia nem executa na placa.</p>
 <p>O resultado é um executável ELF Linux ARM de 32 bits, que não executa diretamente no Windows nem no Ubuntu x86 do notebook.</p>
-<h1><a class="anchor" id="autotoc_md8"></a>
-Acesso ao kit e transferência</h1>
+<h2><a class="anchor" id="autotoc_md8"></a>
+Acesso ao kit e transferência</h2>
 <p>O Micro-USB ST-LINK fornece o terminal serial, separado da alimentação PWR_IN. No PuTTY: selecionar a porta COM reconhecida pelo Windows, com 115200 baud, 8 bits, sem paridade, 1 stop bit e sem controle de fluxo. Usar as credenciais fornecidas pelo professor.</p>
 <p>Na Ethernet direta testada:</p>
 <table class="markdownTable">
@@ -177,8 +180,8 @@ Acesso ao kit e transferência</h1>
 <div class="line">/root/luminosidade /sys/bus/iio/devices/iio:device0/in_voltage13_raw</div>
 </div><!-- fragment --><p>Ctrl+C encerra. Para obter somente seis leituras:</p>
 <div class="fragment"><div class="line">/root/luminosidade /sys/bus/iio/devices/iio:device0/in_voltage13_raw 6</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md9"></a>
-Canal ADC e saída</h1>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md9"></a>
+Canal ADC e saída</h2>
 <p>Canal utilizado: <code>/sys/bus/iio/devices/iio:device0/in_voltage13_raw</code>.</p>
 <p>O canal foi selecionado comparando leituras cobertas e iluminadas. Na avaliação inicial houve variações e valores próximos de zero. A execução do código no kit foi confirmada, mas isso não comprova exatidão ou calibração do sensor.</p>
 <p>Em outro kit ou imagem, listar e comparar os canais:</p>
@@ -196,24 +199,24 @@ Canal ADC e saída</h1>
 <div class="line">KY018,0,contagem_ADC</div>
 <div class="line">KY018,182,contagem_ADC</div>
 </div><!-- fragment --><p>Essa é uma saída local de terminal, ainda sem transmissão UDP.</p>
-<h1><a class="anchor" id="autotoc_md10"></a>
-Teste no Ubuntu sem a placa</h1>
+<h2><a class="anchor" id="autotoc_md10"></a>
+Teste no Ubuntu sem a placa</h2>
 <p>Requer g++ local, já instalado neste computador:</p>
 <div class="fragment"><div class="line">bash testar_no_ubuntu.sh</div>
 </div><!-- fragment --><p>O mesmo código é compilado para o notebook. Um arquivo com 1234 simula a origem da leitura e são solicitadas três amostras. O programa local é <code>build/luminosidade_ubuntu</code>, separado do executável ARM.</p>
 <div class="fragment"><div class="line">echo 2800 &gt; build/adc_simulado.txt</div>
 <div class="line">./build/luminosidade_ubuntu build/adc_simulado.txt 3</div>
 </div><!-- fragment --><p>Também foram verificados arquivos ausentes, vazios, com texto e com número negativo: o programa sinalizou falha. Esse teste não mede luz.</p>
-<h1><a class="anchor" id="autotoc_md11"></a>
-Doxygen</h1>
+<h2><a class="anchor" id="autotoc_md11"></a>
+Doxygen</h2>
 <p>Os comentários no código descrevem classes, métodos, parâmetros, retornos e exceções. Com Doxygen instalado:</p>
 <div class="fragment"><div class="line">doxygen Doxyfile</div>
 </div><!-- fragment --><p>A documentação pronta está incluída no repositório em <code>docs/doxygen/html/</code>, junto do código comentado e do Doxyfile.</p>
 <p>Para visualizar, abrir <code>docs/doxygen/html/index.html</code> no navegador. A página inicial apresenta o projeto; o menu de classes permite consultar <a class="el" href="classSensorLuminosidade.html" title="Le o valor bruto de um KY-018 pelo ADC exposto pelo Linux IIO. Nao converte para lux: isso requer cal...">SensorLuminosidade</a>, <a class="el" href="classAplicacao.html" title="Controla a demonstracao, sem variaveis globais.">Aplicacao</a>, seus métodos, parâmetros, retornos e exceções.</p>
 <p>No GitHub, os arquivos HTML não são exibidos automaticamente como um site. Usar Code → Download ZIP, extrair a pasta completa e abrir o arquivo index.html no navegador. Manter os demais arquivos da pasta HTML juntos, pois contêm estilos e navegação.</p>
 <p>Após mudar comentários ou o README, executar novamente <code>doxygen Doxyfile</code> e incluir os arquivos atualizados no próximo commit.</p>
-<h1><a class="anchor" id="autotoc_md12"></a>
-Inicialização manual utilizada no teste</h1>
+<h2><a class="anchor" id="autotoc_md12"></a>
+Inicialização manual utilizada no teste</h2>
 <p>O boot automático não iniciou o Linux e parou em <code>STM32MP&gt;</code>. O cartão permitiu listar a partição 4 e ler o núcleo e o arquivo de hardware. A seguinte sequência funcionou nesse kit:</p>
 <div class="fragment"><div class="line">load mmc 0:4 ${kernel_addr_r} /boot/zImage</div>
 <div class="line">load mmc 0:4 ${fdt_addr_r} /boot/stm32mp157c-dk2.dtb</div>
@@ -221,18 +224,18 @@ Inicialização manual utilizada no teste</h1>
 <div class="line">setenv bootargs console=ttySTM0,115200 root=PARTUUID=${rootuuid} rootwait rw</div>
 <div class="line">bootz ${kernel_addr_r} - ${fdt_addr_r}</div>
 </div><!-- fragment --><p>Executar somente no U-Boot, não no terminal Linux. Os parâmetros foram temporários: não foi usado <code>saveenv</code> nem aplicada correção permanente do boot. Pode ser necessário repetir após ligar. Não foi comprovado defeito no cartão SD.</p>
-<h1><a class="anchor" id="autotoc_md13"></a>
-Desligamento</h1>
+<h2><a class="anchor" id="autotoc_md13"></a>
+Desligamento</h2>
 <p>Interromper as leituras com Ctrl+C. No terminal da placa:</p>
 <div class="fragment"><div class="line">poweroff</div>
 </div><!-- fragment --><p>Aguardar a mensagem final de desligamento antes de retirar os cabos.</p>
-<h1><a class="anchor" id="autotoc_md14"></a>
-Entrega pelo Git</h1>
+<h2><a class="anchor" id="autotoc_md14"></a>
+Entrega pelo Git</h2>
 <p>Versionar código, scripts, README, Doxyfile, configurações do editor e evidências. Não enviar a pasta build nem o SDK.</p>
 <p>O repositório local foi preparado na pasta do projeto. Configurar o nome e e-mail reais do autor, criar o commit e publicar no GitHub. Se o repositório for privado, garantir acesso ao professor e aos integrantes.</p>
 <p>Conforme o enunciado, informar no Classroom o link do <b>commit final</b>. Conferir os arquivos publicados e acrescentar uma captura do terminal real e a foto da montagem do grupo quando disponíveis.</p>
-<h1><a class="anchor" id="autotoc_md15"></a>
-Referências</h1>
+<h2><a class="anchor" id="autotoc_md15"></a>
+Referências</h2>
 <ul>
 <li>Enunciado de Projeto de Programação Aplicada fornecido pelo professor.</li>
 <li><a href="https://wiki.st.com/stm32mpu/wiki/How_to_use_the_IIO_user_space_interface">ST: interface IIO</a>.</li>
