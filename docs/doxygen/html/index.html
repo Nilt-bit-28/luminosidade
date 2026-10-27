@@ -1,0 +1,250 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Monitoramento de luminosidade - KY-018: Monitoramento de luminosidade — STM32MP1 e KY-018</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Monitoramento de luminosidade - KY-018
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Busca');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrado</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Monitoramento de luminosidade — STM32MP1 e KY-018 </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="md_README"></a> Projeto de Programação Aplicada: leitura de luminosidade para identificar entrada de luz no invólucro de uma carga. O programa C++ roda no Linux do kit STM32MP1, lê o ADC pela interface IIO e mostra contagens brutas no terminal em formato CSV.</p>
+<h1><a class="anchor" id="autotoc_md1"></a>
+Estado da entrega em 26/10/2026</h1>
+<ul>
+<li>Classe de leitura implementada, com comentários Doxygen e sem variáveis globais.</li>
+<li>Compilação cruzada realizada com a toolchain do professor.</li>
+<li>Executável transferido pela Ethernet e executado com sucesso no kit real.</li>
+<li>O grupo confirmou a visualização das leituras pelo PuTTY.</li>
+<li>Os valores são contagens do ADC, não lux. A estabilidade, a resposta à luz e a calibração ainda precisam de avaliação.</li>
+<li>Alarme de abertura, envio UDP e interface gráfica são etapas futuras.</li>
+</ul>
+<p>O enunciado refere-se ao kit DK1. A imagem Linux do kit desta sessão contém <code>stm32mp157c-dk2.dtb</code>, utilizado no teste. Esse nome não deve ser aplicado automaticamente a outro kit ou imagem.</p>
+<h1><a class="anchor" id="autotoc_md2"></a>
+Circuito e alimentação</h1>
+<p>Montar com a placa desligada e sem cabos USB. O enunciado pede enviar a foto da montagem desligada antes dos testes energizados.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">KY-018   </th><th class="markdownTableHeadNone">Kit    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">S, saída analógica   </td><td class="markdownTableBodyNone">A4, CN17, pino 5    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Positivo, pino central no módulo utilizado   </td><td class="markdownTableBodyNone">3V3, CN16, pino 4    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Negativo, marcado com <code>-</code>   </td><td class="markdownTableBodyNone">GND, CN16, pino 7   </td></tr>
+</table>
+<p>Conferir as marcações reais do módulo. Alimentar o sensor com <b>3,3 V</b>, nunca com 5 V. O módulo já contém o divisor resistivo.</p>
+<p>Alimentar o kit em <b>PWR_IN</b> com fonte USB-C adequada de <b>5 V / 3 A</b> e cabo compatível. A alimentação inicial pelo notebook foi detectada como 500 mA e gerou aviso de corrente insuficiente. Manter o cartão SD e as chaves na configuração recebida.</p>
+<h1><a class="anchor" id="autotoc_md3"></a>
+Arquivos e classes</h1>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Arquivo   </th><th class="markdownTableHeadNone">Função    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code><a class="el" href="luminosidade_8cpp.html" title="Leitura de luminosidade pelo ADC do Linux IIO e demonstracao em CSV.">luminosidade.cpp</a></code>   </td><td class="markdownTableBodyNone">Classes, comentários Doxygen e ponto de entrada    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>compilar.sh</code>   </td><td class="markdownTableBodyNone">Compila para Linux ARM    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>ambiente.sh</code>   </td><td class="markdownTableBodyNone">Configura o caminho do SDK e suas bibliotecas    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>cxx.sh</code>   </td><td class="markdownTableBodyNone">Permite ao editor consultar o compilador no ambiente correto    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>testar_no_ubuntu.sh</code>   </td><td class="markdownTableBodyNone">Teste local com arquivo simulado    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>.vscode/</code>   </td><td class="markdownTableBodyNone">Tarefa de compilação e configuração C++ do editor    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>Doxyfile</code>   </td><td class="markdownTableBodyNone">Configuração opcional de geração da documentação    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>docs/teste_na_placa_2026-10-26.txt</code>   </td><td class="markdownTableBodyNone">Registro do teste real    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>build/</code>   </td><td class="markdownTableBodyNone">Arquivos gerados, ignorados pelo Git   </td></tr>
+</table>
+<p><b><a class="el" href="classSensorLuminosidade.html" title="Le o valor bruto de um KY-018 pelo ADC exposto pelo Linux IIO. Nao converte para lux: isso requer cal...">SensorLuminosidade</a>:</b> guarda privadamente o caminho do arquivo ADC. Seu construtor recebe o caminho; <code>long ler() const</code> abre o arquivo, lê e retorna a contagem. Falha de leitura ou valor negativo gera <code>std::runtime_error</code>. O arquivo é reaberto a cada chamada e fechado automaticamente.</p>
+<p><b><a class="el" href="classAplicacao.html" title="Controla a demonstracao, sem variaveis globais.">Aplicacao</a>:</b> o método estático <code>executar(argc, argv)</code> verifica argumentos, cria o sensor, solicita leituras e imprime resultados. Entre as leituras há uma pausa de 500 ms; após a última amostra limitada não há pausa. Exceções são capturadas e mostradas. Retorno 0 indica sucesso; retorno 1 indica falha.</p>
+<p><b><a class="el" href="luminosidade_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="Ponto de entrada; delega a logica para a classe Aplicacao.">main()</a>:</b> apenas delega a execução à classe <a class="el" href="classAplicacao.html" title="Controla a demonstracao, sem variaveis globais.">Aplicacao</a>.</p>
+<h1><a class="anchor" id="autotoc_md4"></a>
+Dependências</h1>
+<ul>
+<li>Linux no computador de desenvolvimento: utilizado Ubuntu 24.04 no WSL 2.</li>
+<li>Bash e ferramentas básicas do Linux.</li>
+<li>SDK <code>arm-buildroot-linux-gnueabihf_sdk-DK2.tar.gz</code> fornecido pelo professor, com compilador, bibliotecas e sysroot.</li>
+<li>Linux do kit com canais ADC habilitados no IIO.</li>
+<li>Opcional: VS Code com extensão WSL; g++ local para simulação; Doxygen para gerar HTML; OpenSSH/SCP para transferir pela rede.</li>
+</ul>
+<p>O SDK fica fora da pasta do projeto e não deve ser enviado ao Git.</p>
+<h1><a class="anchor" id="autotoc_md5"></a>
+Abrir no VS Code pelo Ubuntu</h1>
+<p>No terminal Ubuntu deste computador:</p>
+<div class="fragment"><div class="line">cd /home/felipe/stm32/luminosidade</div>
+<div class="line">code .</div>
+</div><!-- fragment --><p>Conferir <code>WSL: Ubuntu-24.04</code> no canto inferior esquerdo. Os arquivos nessa pasta são os utilizados para desenvolver. O ZIP entregue é uma cópia de backup.</p>
+<h1><a class="anchor" id="autotoc_md6"></a>
+Preparar o SDK em outro computador</h1>
+<p>Extrair o pacote original pelo Linux, preservando permissões e links. Após posicionar o SDK no local definitivo, executar <code>relocate-sdk.sh</code> na raiz dele, conforme o manual do Buildroot.</p>
+<p>Na instalação deste computador, a extração pelo Windows omitiu links simbólicos e o pacote apresentava diretórios <code>usr</code> repetidos. Na cópia Linux utilizada foram restaurados os links do pacote original e executada a relocação. Se esse problema ocorrer novamente, corrigir a extração antes de compilar; não trocar a versão da toolchain sem verificar a compatibilidade com o kit.</p>
+<h1><a class="anchor" id="autotoc_md7"></a>
+Compilar para a placa</h1>
+<p>O SDK é procurado por padrão em <code>$HOME/stm32/sdk</code>.</p>
+<div class="fragment"><div class="line">cd /home/felipe/stm32/luminosidade</div>
+<div class="line">bash compilar.sh</div>
+</div><!-- fragment --><p>Para outro local de instalação:</p>
+<div class="fragment"><div class="line">STM32_SDK=/caminho/completo/do/sdk bash compilar.sh</div>
+</div><!-- fragment --><p>O script verifica o compilador e o sysroot, compila em um arquivo temporário e só substitui <code>build/luminosidade</code> após sucesso. Se a compilação falhar, corrigir o erro antes de transferir; não enviar um executável antigo por engano.</p>
+<p>No VS Code, <b>Ctrl+Shift+B</b> chama essa mesma tarefa. Apenas compila: não envia nem executa na placa.</p>
+<p>O resultado é um executável ELF Linux ARM de 32 bits, que não executa diretamente no Windows nem no Ubuntu x86 do notebook.</p>
+<h1><a class="anchor" id="autotoc_md8"></a>
+Acesso ao kit e transferência</h1>
+<p>O Micro-USB ST-LINK fornece o terminal serial, separado da alimentação PWR_IN. No PuTTY: selecionar a porta COM reconhecida pelo Windows, com 115200 baud, 8 bits, sem paridade, 1 stop bit e sem controle de fluxo. Usar as credenciais fornecidas pelo professor.</p>
+<p>Na Ethernet direta testada:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Equipamento   </th><th class="markdownTableHeadNone">IPv4   </th><th class="markdownTableHeadNone">Máscara    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Notebook, adaptador Ethernet   </td><td class="markdownTableBodyNone">192.168.42.10   </td><td class="markdownTableBodyNone">255.255.255.0    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">STM32, eth0   </td><td class="markdownTableBodyNone">192.168.42.2   </td><td class="markdownTableBodyNone">255.255.255.0   </td></tr>
+</table>
+<p>Não foi necessário gateway. O ajuste de endereço aplicado no Windows foi temporário e pode precisar ser repetido após reiniciar. Em outra rede, verificar os endereços reais.</p>
+<p>No terminal Ubuntu do notebook, dentro do projeto:</p>
+<div class="fragment"><div class="line">scp -O build/luminosidade root@192.168.42.2:/root/luminosidade</div>
+</div><!-- fragment --><p><code>-O</code> usa o protocolo SCP tradicional, compatível com o serviço Dropbear do kit quando não há SFTP. Na sessão testada, foi utilizado PSCP no Windows, pelo mesmo protocolo SCP.</p>
+<p>No <b>terminal da placa</b>, não no Ubuntu do notebook:</p>
+<div class="fragment"><div class="line">chmod +x /root/luminosidade</div>
+<div class="line">/root/luminosidade /sys/bus/iio/devices/iio:device0/in_voltage13_raw</div>
+</div><!-- fragment --><p>Ctrl+C encerra. Para obter somente seis leituras:</p>
+<div class="fragment"><div class="line">/root/luminosidade /sys/bus/iio/devices/iio:device0/in_voltage13_raw 6</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md9"></a>
+Canal ADC e saída</h1>
+<p>Canal utilizado: <code>/sys/bus/iio/devices/iio:device0/in_voltage13_raw</code>.</p>
+<p>O canal foi selecionado comparando leituras cobertas e iluminadas. Na avaliação inicial houve variações e valores próximos de zero. A execução do código no kit foi confirmada, mas isso não comprova exatidão ou calibração do sensor.</p>
+<p>Em outro kit ou imagem, listar e comparar os canais:</p>
+<div class="fragment"><div class="line">for f in /sys/bus/iio/devices/iio:device*/in_voltage*_raw; do</div>
+<div class="line">    [ -f &quot;$f&quot; ] || continue</div>
+<div class="line">    echo &quot;$f&quot;</div>
+<div class="line">    cat &quot;$f&quot;</div>
+<div class="line">done</div>
+</div><!-- fragment --><p>Não presumir que A4 significa <code>in_voltage4_raw</code>. A saída CSV contém sensor, valor e unidade. Amostra real registrada:</p>
+<div class="fragment"><div class="line">sensor,valor,unidade</div>
+<div class="line">KY018,40,contagem_ADC</div>
+<div class="line">KY018,0,contagem_ADC</div>
+<div class="line">KY018,0,contagem_ADC</div>
+<div class="line">KY018,0,contagem_ADC</div>
+<div class="line">KY018,0,contagem_ADC</div>
+<div class="line">KY018,182,contagem_ADC</div>
+</div><!-- fragment --><p>Essa é uma saída local de terminal, ainda sem transmissão UDP.</p>
+<h1><a class="anchor" id="autotoc_md10"></a>
+Teste no Ubuntu sem a placa</h1>
+<p>Requer g++ local, já instalado neste computador:</p>
+<div class="fragment"><div class="line">bash testar_no_ubuntu.sh</div>
+</div><!-- fragment --><p>O mesmo código é compilado para o notebook. Um arquivo com 1234 simula a origem da leitura e são solicitadas três amostras. O programa local é <code>build/luminosidade_ubuntu</code>, separado do executável ARM.</p>
+<div class="fragment"><div class="line">echo 2800 &gt; build/adc_simulado.txt</div>
+<div class="line">./build/luminosidade_ubuntu build/adc_simulado.txt 3</div>
+</div><!-- fragment --><p>Também foram verificados arquivos ausentes, vazios, com texto e com número negativo: o programa sinalizou falha. Esse teste não mede luz.</p>
+<h1><a class="anchor" id="autotoc_md11"></a>
+Doxygen</h1>
+<p>Os comentários no código descrevem classes, métodos, parâmetros, retornos e exceções. Com Doxygen instalado:</p>
+<div class="fragment"><div class="line">doxygen Doxyfile</div>
+</div><!-- fragment --><p>A documentação pronta está incluída no repositório em <code>docs/doxygen/html/</code>, junto do código comentado e do Doxyfile.</p>
+<p>Para visualizar, abrir <code>docs/doxygen/html/index.html</code> no navegador. A página inicial apresenta o projeto; o menu de classes permite consultar <a class="el" href="classSensorLuminosidade.html" title="Le o valor bruto de um KY-018 pelo ADC exposto pelo Linux IIO. Nao converte para lux: isso requer cal...">SensorLuminosidade</a>, <a class="el" href="classAplicacao.html" title="Controla a demonstracao, sem variaveis globais.">Aplicacao</a>, seus métodos, parâmetros, retornos e exceções.</p>
+<p>No GitHub, os arquivos HTML não são exibidos automaticamente como um site. Usar Code → Download ZIP, extrair a pasta completa e abrir o arquivo index.html no navegador. Manter os demais arquivos da pasta HTML juntos, pois contêm estilos e navegação.</p>
+<p>Após mudar comentários ou o README, executar novamente <code>doxygen Doxyfile</code> e incluir os arquivos atualizados no próximo commit.</p>
+<h1><a class="anchor" id="autotoc_md12"></a>
+Inicialização manual utilizada no teste</h1>
+<p>O boot automático não iniciou o Linux e parou em <code>STM32MP&gt;</code>. O cartão permitiu listar a partição 4 e ler o núcleo e o arquivo de hardware. A seguinte sequência funcionou nesse kit:</p>
+<div class="fragment"><div class="line">load mmc 0:4 ${kernel_addr_r} /boot/zImage</div>
+<div class="line">load mmc 0:4 ${fdt_addr_r} /boot/stm32mp157c-dk2.dtb</div>
+<div class="line">part uuid mmc 0:4 rootuuid</div>
+<div class="line">setenv bootargs console=ttySTM0,115200 root=PARTUUID=${rootuuid} rootwait rw</div>
+<div class="line">bootz ${kernel_addr_r} - ${fdt_addr_r}</div>
+</div><!-- fragment --><p>Executar somente no U-Boot, não no terminal Linux. Os parâmetros foram temporários: não foi usado <code>saveenv</code> nem aplicada correção permanente do boot. Pode ser necessário repetir após ligar. Não foi comprovado defeito no cartão SD.</p>
+<h1><a class="anchor" id="autotoc_md13"></a>
+Desligamento</h1>
+<p>Interromper as leituras com Ctrl+C. No terminal da placa:</p>
+<div class="fragment"><div class="line">poweroff</div>
+</div><!-- fragment --><p>Aguardar a mensagem final de desligamento antes de retirar os cabos.</p>
+<h1><a class="anchor" id="autotoc_md14"></a>
+Entrega pelo Git</h1>
+<p>Versionar código, scripts, README, Doxyfile, configurações do editor e evidências. Não enviar a pasta build nem o SDK.</p>
+<p>O repositório local foi preparado na pasta do projeto. Configurar o nome e e-mail reais do autor, criar o commit e publicar no GitHub. Se o repositório for privado, garantir acesso ao professor e aos integrantes.</p>
+<p>Conforme o enunciado, informar no Classroom o link do <b>commit final</b>. Conferir os arquivos publicados e acrescentar uma captura do terminal real e a foto da montagem do grupo quando disponíveis.</p>
+<h1><a class="anchor" id="autotoc_md15"></a>
+Referências</h1>
+<ul>
+<li>Enunciado de Projeto de Programação Aplicada fornecido pelo professor.</li>
+<li><a href="https://wiki.st.com/stm32mpu/wiki/How_to_use_the_IIO_user_space_interface">ST: interface IIO</a>.</li>
+<li><a href="https://buildroot.org/downloads/manual/manual.html">Buildroot: SDK e relocação</a>.</li>
+<li><a href="https://code.visualstudio.com/docs/remote/wsl">VS Code com WSL</a>.</li>
+<li><a href="https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github">GitHub: publicar código local</a>. </li>
+</ul>
+</div></div><!-- PageDoc -->
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

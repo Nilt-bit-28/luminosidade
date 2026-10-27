@@ -184,7 +184,13 @@ Os comentários no código descrevem classes, métodos, parâmetros, retornos e 
 doxygen Doxyfile
 ```
 
-Abrir `docs/doxygen/html/index.html`. O HTML gerado é ignorado pelo Git; os fontes comentados e o Doxyfile são versionados.
+A documentação pronta está incluída no repositório em `docs/doxygen/html/`, junto do código comentado e do Doxyfile.
+
+Para visualizar, abrir `docs/doxygen/html/index.html` no navegador. A página inicial apresenta o projeto; o menu de classes permite consultar SensorLuminosidade, Aplicacao, seus métodos, parâmetros, retornos e exceções.
+
+No GitHub, os arquivos HTML não são exibidos automaticamente como um site. Usar Code → Download ZIP, extrair a pasta completa e abrir o arquivo index.html no navegador. Manter os demais arquivos da pasta HTML juntos, pois contêm estilos e navegação.
+
+Após mudar comentários ou o README, executar novamente `doxygen Doxyfile` e incluir os arquivos atualizados no próximo commit.
 
 ## Inicialização manual utilizada no teste
 

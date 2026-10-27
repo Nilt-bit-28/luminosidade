@@ -1,3 +1,6 @@
+/** @file luminosidade.cpp
+ * @brief Leitura de luminosidade pelo ADC do Linux IIO e demonstracao em CSV.
+ */
 #include <chrono>
 #include <exception>
 #include <fstream>
@@ -11,9 +14,11 @@
  * Nao converte para lux: isso requer calibracao do sensor.
  */
 class SensorLuminosidade {
+    /** @brief Caminho completo do arquivo de leitura bruta do ADC. */
     std::string caminho_;
 public:
-    /** @param caminho Caminho completo do arquivo in_voltageX_raw confirmado no kit. */
+    /** @brief Prepara o sensor guardando o caminho do ADC.
+     * @param caminho Caminho completo do arquivo in_voltageX_raw confirmado no kit. */
     explicit SensorLuminosidade(std::string caminho)
         : caminho_(std::move(caminho)) {}
 
@@ -36,8 +41,9 @@ class Aplicacao {
 public:
     /** @brief Imprime uma leitura a cada 500 ms; Ctrl+C encerra.
      * @param argc Quantidade de argumentos.
-     * @param argv Primeiro argumento: caminho completo do ADC.
-     * Segundo argumento opcional: numero positivo de amostras.
+     * @param argv Lista contendo o nome do programa, o caminho do ADC e,
+     * opcionalmente, uma quantidade positiva de amostras.
+     * @return Zero no sucesso; um em caso de argumento invalido ou falha de leitura.
      */
     static int executar(int argc, char* argv[]) {
         try {
@@ -69,7 +75,11 @@ public:
     }
 };
 
-/** @brief Ponto de entrada; delega a logica para a classe Aplicacao. */
+/** @brief Ponto de entrada; delega a logica para a classe Aplicacao.
+ * @param argc Quantidade de argumentos, incluindo o nome do programa.
+ * @param argv Argumentos recebidos pela linha de comando.
+ * @return Codigo devolvido por Aplicacao::executar.
+ */
 int main(int argc, char* argv[]) {
     return Aplicacao::executar(argc, argv);
 }
