@@ -1,0 +1,6 @@
+/build/
+/docs/doxygen/
+*.o
+*.exe
+*.tar.gz
+*.zip

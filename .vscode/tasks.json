@@ -1,0 +1,14 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Compilar para STM32 (Linux ARM)",
+      "type": "process",
+      "command": "bash",
+      "args": ["${workspaceFolder}/compilar.sh"],
+      "problemMatcher": ["$gcc"],
+      "group": {"kind": "build", "isDefault": true},
+      "presentation": {"reveal": "always", "panel": "shared"}
+    }
+  ]
+}

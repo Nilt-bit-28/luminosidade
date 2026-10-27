@@ -1,0 +1,12 @@
+PROJECT_NAME           = "Monitoramento de luminosidade - KY-018"
+OUTPUT_DIRECTORY       = docs/doxygen
+INPUT                  = luminosidade.cpp
+FILE_PATTERNS          = *.cpp
+RECURSIVE              = NO
+EXTRACT_ALL            = NO
+EXTRACT_PRIVATE        = YES
+GENERATE_HTML          = YES
+GENERATE_LATEX         = NO
+QUIET                  = YES
+WARN_IF_UNDOCUMENTED   = YES
+OUTPUT_LANGUAGE        = Brazilian

@@ -1,0 +1,28 @@
+Teste realizado em 26/10/2026, pela Ethernet direta entre notebook e kit.
+
+Notebook Ethernet: 192.168.42.10/24 (configuracao temporaria ActiveStore).
+Kit: 192.168.42.2/24.
+Sistema: Linux STM32MP1 6.9.8, armv7l.
+Programa compilado com a toolchain do professor e copiado para /root/luminosidade.
+
+Comando executado na placa:
+/root/luminosidade /sys/bus/iio/devices/iio:device0/in_voltage13_raw 6
+
+Saida observada:
+sensor,valor,unidade
+KY018,40,contagem_ADC
+KY018,0,contagem_ADC
+KY018,0,contagem_ADC
+KY018,0,contagem_ADC
+KY018,0,contagem_ADC
+KY018,182,contagem_ADC
+
+Codigo de saida: 0.
+
+Conclusao: o programa C++ executou no kit e leu o arquivo ADC real.
+O canal permanece provisoriamente associado ao KY-018. A resposta consistente
+a luz, a montagem e a calibracao ainda precisam ser verificadas.
+Os valores sao contagens brutas, nao lux.
+
+O Linux foi iniciado manualmente pelo U-Boot. Nao foi salva uma correcao
+permanente do processo de boot.
