@@ -1,3 +1,4 @@
+Alunos Afonseca - Garcia - 1º TEN MS PQD Rivero 
 # Monitoramento de luminosidade — STM32MP1 e KY-018
 
 Projeto de Programação Aplicada: leitura de luminosidade para identificar entrada de luz no invólucro de uma carga. O programa C++ roda no Linux do kit STM32MP1, lê o ADC pela interface IIO e mostra contagens brutas no terminal em formato CSV.
