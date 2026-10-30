@@ -1,6 +1,6 @@
 PROJECT_NAME           = "Monitoramento de luminosidade - KY-018"
 OUTPUT_DIRECTORY       = docs/doxygen
-INPUT                  = README.md luminosidade.cpp
+INPUT                  = README.md luminosidade.cpp docs/PROTOCOLO_UDP.md docs/SERVIDOR_UDP.md
 USE_MDFILE_AS_MAINPAGE  = README.md
 FILE_PATTERNS          = *.cpp
 RECURSIVE              = NO

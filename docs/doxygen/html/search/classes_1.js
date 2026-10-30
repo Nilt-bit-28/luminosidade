@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['sensorluminosidade_0',['SensorLuminosidade',['../classSensorLuminosidade.html',1,'']]]
+  ['configuracao_0',['Configuracao',['../classConfiguracao.html',1,'']]]
 ];

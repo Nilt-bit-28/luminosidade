@@ -76,12 +76,18 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Leitura de luminosidade pelo ADC do Linux IIO e demonstracao em CSV.  
+<p>Leitura do KY-018 pelo Linux IIO, exibicao local e envio opcional UDP.  
 <a href="#details">Mais...</a></p>
-<div class="textblock"><code>#include &lt;chrono&gt;</code><br />
-<code>#include &lt;exception&gt;</code><br />
+<div class="textblock"><code>#include &lt;arpa/inet.h&gt;</code><br />
+<code>#include &lt;sys/socket.h&gt;</code><br />
+<code>#include &lt;unistd.h&gt;</code><br />
+<code>#include &lt;cerrno&gt;</code><br />
+<code>#include &lt;chrono&gt;</code><br />
+<code>#include &lt;cstdint&gt;</code><br />
+<code>#include &lt;cstring&gt;</code><br />
 <code>#include &lt;fstream&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;memory&gt;</code><br />
 <code>#include &lt;stdexcept&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;thread&gt;</code><br />
@@ -92,20 +98,26 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Componentes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSensorLuminosidade.html">SensorLuminosidade</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Le o valor bruto de um KY-018 pelo ADC exposto pelo Linux IIO. Nao converte para lux: isso requer calibracao do sensor.  <a href="classSensorLuminosidade.html#details">Mais...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Le o ADC; a contagem bruta ainda nao e uma medida em lux.  <a href="classSensorLuminosidade.html#details">Mais...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfiguracao.html">Configuracao</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valida e encapsula os argumentos da linha de comando.  <a href="classConfiguracao.html#details">Mais...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnviadorUDP.html">EnviadorUDP</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gerencia o socket UDP e serializa as leituras no protocolo v1.  <a href="classEnviadorUDP.html#details">Mais...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAplicacao.html">Aplicacao</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controla a demonstracao, sem variaveis globais.  <a href="classAplicacao.html#details">Mais...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controla a leitura, a exibicao local e o envio opcional.  <a href="classAplicacao.html#details">Mais...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Funções</h2></td></tr>
 <tr class="memitem:a0ddf1224851353fc92bfbff6f499fa97" id="r_a0ddf1224851353fc92bfbff6f499fa97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="luminosidade_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">main</a> (int argc, char *argv[])</td></tr>
-<tr class="memdesc:a0ddf1224851353fc92bfbff6f499fa97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ponto de entrada; delega a logica para a classe <a class="el" href="classAplicacao.html" title="Controla a demonstracao, sem variaveis globais.">Aplicacao</a>.  <br /></td></tr>
+<tr class="memdesc:a0ddf1224851353fc92bfbff6f499fa97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delega a execucao para <a class="el" href="classAplicacao.html" title="Controla a leitura, a exibicao local e o envio opcional.">Aplicacao</a>.  <br /></td></tr>
 <tr class="separator:a0ddf1224851353fc92bfbff6f499fa97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descrição detalhada</h2>
-<div class="textblock"><p>Leitura de luminosidade pelo ADC do Linux IIO e demonstracao em CSV. </p>
+<div class="textblock"><p>Leitura do KY-018 pelo Linux IIO, exibicao local e envio opcional UDP. </p>
 
 <p class="definition">Definição no arquivo <a class="el" href="luminosidade_8cpp_source.html">luminosidade.cpp</a>.</p>
 </div><h2 class="groupheader">Funções</h2>
@@ -135,17 +147,17 @@ Funções</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Ponto de entrada; delega a logica para a classe <a class="el" href="classAplicacao.html" title="Controla a demonstracao, sem variaveis globais.">Aplicacao</a>. </p>
+<p>Delega a execucao para <a class="el" href="classAplicacao.html" title="Controla a leitura, a exibicao local e o envio opcional.">Aplicacao</a>. </p>
 <dl class="params"><dt>Parâmetros</dt><dd>
   <table class="params">
-    <tr><td class="paramname">argc</td><td>Quantidade de argumentos, incluindo o nome do programa. </td></tr>
-    <tr><td class="paramname">argv</td><td>Argumentos recebidos pela linha de comando. </td></tr>
+    <tr><td class="paramname">argc</td><td>Quantidade de argumentos.</td></tr>
+    <tr><td class="paramname">argv</td><td>Argumentos. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Retorna</dt><dd>Codigo devolvido por <a class="el" href="classAplicacao.html#a73107d9d2be25e0b509e78535c092d92" title="Imprime uma leitura a cada 500 ms; Ctrl+C encerra.">Aplicacao::executar</a>. </dd></dl>
+<dl class="section return"><dt>Retorna</dt><dd>Codigo devolvido pela aplicacao. </dd></dl>
 
-<p class="definition">Definição na linha <a class="el" href="luminosidade_8cpp_source.html#l00083">83</a> do arquivo <a class="el" href="luminosidade_8cpp_source.html">luminosidade.cpp</a>.</p>
+<p class="definition">Definição na linha <a class="el" href="luminosidade_8cpp_source.html#l00209">209</a> do arquivo <a class="el" href="luminosidade_8cpp_source.html">luminosidade.cpp</a>.</p>
 
 </div>
 </div>

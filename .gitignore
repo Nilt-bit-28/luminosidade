@@ -3,3 +3,6 @@
 *.exe
 *.tar.gz
 *.zip
+/logs/
+__pycache__/
+*.pyc

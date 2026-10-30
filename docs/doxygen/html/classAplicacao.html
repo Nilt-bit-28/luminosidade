@@ -76,20 +76,52 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Controla a demonstracao, sem variaveis globais.  
+<p>Controla a leitura, a exibicao local e o envio opcional.  
  <a href="classAplicacao.html#details">Mais...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Membros públicos estáticos</h2></td></tr>
+<tr class="memitem:a82013f7897df1ad2353df3ba6bd47eb1" id="r_a82013f7897df1ad2353df3ba6bd47eb1"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAplicacao.html#a82013f7897df1ad2353df3ba6bd47eb1">ajuda</a> ()</td></tr>
+<tr class="memdesc:a82013f7897df1ad2353df3ba6bd47eb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apresenta o modo local e as opcoes de rede.  <br /></td></tr>
+<tr class="separator:a82013f7897df1ad2353df3ba6bd47eb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a73107d9d2be25e0b509e78535c092d92" id="r_a73107d9d2be25e0b509e78535c092d92"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAplicacao.html#a73107d9d2be25e0b509e78535c092d92">executar</a> (int argc, char *argv[])</td></tr>
-<tr class="memdesc:a73107d9d2be25e0b509e78535c092d92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imprime uma leitura a cada 500 ms; Ctrl+C encerra.  <br /></td></tr>
+<tr class="memdesc:a73107d9d2be25e0b509e78535c092d92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executa a aplicacao; as falhas de envio nao interrompem a leitura.  <br /></td></tr>
 <tr class="separator:a73107d9d2be25e0b509e78535c092d92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descrição detalhada</h2>
-<div class="textblock"><p>Controla a demonstracao, sem variaveis globais. </p>
+<div class="textblock"><p>Controla a leitura, a exibicao local e o envio opcional. </p>
 
-<p class="definition">Definição na linha <a class="el" href="luminosidade_8cpp_source.html#l00040">40</a> do arquivo <a class="el" href="luminosidade_8cpp_source.html">luminosidade.cpp</a>.</p>
+<p class="definition">Definição na linha <a class="el" href="luminosidade_8cpp_source.html#l00160">160</a> do arquivo <a class="el" href="luminosidade_8cpp_source.html">luminosidade.cpp</a>.</p>
 </div><h2 class="groupheader">Documentação das funções</h2>
+<a id="a82013f7897df1ad2353df3ba6bd47eb1" name="a82013f7897df1ad2353df3ba6bd47eb1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82013f7897df1ad2353df3ba6bd47eb1">&#9670;&#160;</a></span>ajuda()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void Aplicacao::ajuda </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Apresenta o modo local e as opcoes de rede. </p>
+
+<p class="definition">Definição na linha <a class="el" href="luminosidade_8cpp_source.html#l00163">163</a> do arquivo <a class="el" href="luminosidade_8cpp_source.html">luminosidade.cpp</a>.</p>
+
+</div>
+</div>
 <a id="a73107d9d2be25e0b509e78535c092d92" name="a73107d9d2be25e0b509e78535c092d92"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a73107d9d2be25e0b509e78535c092d92">&#9670;&#160;</a></span>executar()</h2>
 
@@ -124,17 +156,17 @@ Membros públicos estáticos</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Imprime uma leitura a cada 500 ms; Ctrl+C encerra. </p>
+<p>Executa a aplicacao; as falhas de envio nao interrompem a leitura. </p>
 <dl class="params"><dt>Parâmetros</dt><dd>
   <table class="params">
     <tr><td class="paramname">argc</td><td>Quantidade de argumentos. </td></tr>
-    <tr><td class="paramname">argv</td><td>Lista contendo o nome do programa, o caminho do ADC e, opcionalmente, uma quantidade positiva de amostras. </td></tr>
+    <tr><td class="paramname">argv</td><td>Argumentos da linha de comando. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Retorna</dt><dd>Zero no sucesso; um em caso de argumento invalido ou falha de leitura. </dd></dl>
+<dl class="section return"><dt>Retorna</dt><dd>Zero no termino normal; um na falha de configuracao ou leitura. </dd></dl>
 
-<p class="definition">Definição na linha <a class="el" href="luminosidade_8cpp_source.html#l00048">48</a> do arquivo <a class="el" href="luminosidade_8cpp_source.html">luminosidade.cpp</a>.</p>
+<p class="definition">Definição na linha <a class="el" href="luminosidade_8cpp_source.html#l00174">174</a> do arquivo <a class="el" href="luminosidade_8cpp_source.html">luminosidade.cpp</a>.</p>
 
 </div>
 </div>

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['executar_0',['executar',['../classAplicacao.html#a73107d9d2be25e0b509e78535c092d92',1,'Aplicacao']]]
+  ['ajuda_0',['ajuda',['../classAplicacao.html#a82013f7897df1ad2353df3ba6bd47eb1',1,'Aplicacao']]],
+  ['amostras_1',['amostras',['../classConfiguracao.html#a85098c6a185f090f8b8860fd1172eec2',1,'Configuracao']]]
 ];

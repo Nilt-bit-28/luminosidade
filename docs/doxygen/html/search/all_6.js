@@ -1,14 +1,19 @@
 var searchData=
 [
-  ['e_20alimentação_0',['Circuito e alimentação',['../index.html#autotoc_md2',1,'']]],
-  ['e_20classes_1',['Arquivos e classes',['../index.html#autotoc_md3',1,'']]],
-  ['e_20ky_20018_2',['Monitoramento de luminosidade — STM32MP1 e KY-018',['../index.html#autotoc_md0',1,'']]],
-  ['e_20saída_3',['Canal ADC e saída',['../index.html#autotoc_md9',1,'']]],
-  ['e_20transferência_4',['Acesso ao kit e transferência',['../index.html#autotoc_md8',1,'']]],
-  ['em_2026_2010_202026_5',['Estado da entrega em 26/10/2026',['../index.html#autotoc_md1',1,'']]],
-  ['em_20outro_20computador_6',['Preparar o SDK em outro computador',['../index.html#autotoc_md6',1,'']]],
-  ['entrega_20em_2026_2010_202026_7',['Estado da entrega em 26/10/2026',['../index.html#autotoc_md1',1,'']]],
-  ['entrega_20pelo_20git_8',['Entrega pelo Git',['../index.html#autotoc_md14',1,'']]],
-  ['estado_20da_20entrega_20em_2026_2010_202026_9',['Estado da entrega em 26/10/2026',['../index.html#autotoc_md1',1,'']]],
-  ['executar_10',['executar',['../classAplicacao.html#a73107d9d2be25e0b509e78535c092d92',1,'Aplicacao']]]
+  ['a_20evidência_0',['5. Conferir a evidência',['../md_docs_2SERVIDOR__UDP.html#autotoc_md25',1,'']]],
+  ['a_20nova_20versão_1',['3. Compilar e transferir a nova versão',['../md_docs_2SERVIDOR__UDP.html#autotoc_md23',1,'']]],
+  ['a_20placa_2',['a placa',['../index.html#autotoc_md9',1,'Compilar para a placa'],['../index.html#autotoc_md12',1,'Teste no Ubuntu sem a placa']]],
+  ['a_20rede_3',['1. Preparar a rede',['../md_docs_2SERVIDOR__UDP.html#autotoc_md21',1,'']]],
+  ['abrir_20no_20vs_20code_20pelo_20ubuntu_4',['Abrir no VS Code pelo Ubuntu',['../index.html#autotoc_md7',1,'']]],
+  ['abrir_20o_20servidor_20no_20notebook_5',['2. Abrir o servidor no notebook',['../md_docs_2SERVIDOR__UDP.html#autotoc_md22',1,'']]],
+  ['acesso_20ao_20kit_20e_20transferência_6',['Acesso ao kit e transferência',['../index.html#autotoc_md10',1,'']]],
+  ['adc_20e_20saída_7',['Canal ADC e saída',['../index.html#autotoc_md11',1,'']]],
+  ['ajuda_8',['ajuda',['../classAplicacao.html#a82013f7897df1ad2353df3ba6bd47eb1',1,'Aplicacao']]],
+  ['alimentação_9',['Circuito e alimentação',['../index.html#autotoc_md4',1,'']]],
+  ['amostras_10',['amostras',['../classConfiguracao.html#a85098c6a185f090f8b8860fd1172eec2',1,'Configuracao']]],
+  ['amostras_5f_11',['amostras_',['../classConfiguracao.html#a6b7496efc29db69bd1e0e288beb7b4c8',1,'Configuracao']]],
+  ['ao_20kit_20e_20transferência_12',['Acesso ao kit e transferência',['../index.html#autotoc_md10',1,'']]],
+  ['aplicacao_13',['Aplicacao',['../classAplicacao.html',1,'']]],
+  ['arquivos_20e_20classes_14',['Arquivos e classes',['../index.html#autotoc_md5',1,'']]],
+  ['automatizado_20sem_20placa_15',['Teste automatizado sem placa',['../md_docs_2SERVIDOR__UDP.html#autotoc_md26',1,'']]]
 ];

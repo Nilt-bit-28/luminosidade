@@ -1,0 +1,11 @@
+recebido_em_utc,ip_origem,grupo,sensor,sequencia,valor,unidade,tempo_ms
+2026-10-30T01:52:24.580+00:00,192.168.42.2,grupo_luminosidade,KY018,0,0,contagem_ADC,2
+2026-10-30T01:52:25.081+00:00,192.168.42.2,grupo_luminosidade,KY018,1,0,contagem_ADC,504
+2026-10-30T01:52:25.582+00:00,192.168.42.2,grupo_luminosidade,KY018,2,0,contagem_ADC,1005
+2026-10-30T01:52:26.084+00:00,192.168.42.2,grupo_luminosidade,KY018,3,277,contagem_ADC,1506
+2026-10-30T01:52:26.584+00:00,192.168.42.2,grupo_luminosidade,KY018,4,89,contagem_ADC,2007
+2026-10-30T01:52:27.086+00:00,192.168.42.2,grupo_luminosidade,KY018,5,99,contagem_ADC,2509
+2026-10-30T01:52:27.587+00:00,192.168.42.2,grupo_luminosidade,KY018,6,131,contagem_ADC,3010
+2026-10-30T01:52:28.088+00:00,192.168.42.2,grupo_luminosidade,KY018,7,55,contagem_ADC,3511
+2026-10-30T01:52:28.590+00:00,192.168.42.2,grupo_luminosidade,KY018,8,280,contagem_ADC,4012
+2026-10-30T01:52:29.091+00:00,192.168.42.2,grupo_luminosidade,KY018,9,221,contagem_ADC,4513

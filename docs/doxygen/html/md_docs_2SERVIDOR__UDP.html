@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Monitoramento de luminosidade - KY-018: Etapa de servidor — preparação para 02/11/2026</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Monitoramento de luminosidade - KY-018
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Busca');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrado</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div><div class="header">
+  <div class="headertitle"><div class="title">Etapa de servidor — preparação para 02/11/2026</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md19"></a> Fluxo: <b>KY-018 → ADC/Linux da STM32 → programa C++ → Ethernet/UDP → servidor Python no notebook → terminal e CSV</b>.</p>
+<p>O receptor não precisa de bibliotecas Python externas. Ele funciona no Windows ou Linux. Nesta etapa, a apresentação é no terminal, sem gráfico. O protocolo completo está em <code>PROTOCOLO_UDP.md</code>.</p>
+<h1><a class="anchor" id="autotoc_md20"></a>
+O que foi validado</h1>
+<ul>
+<li>Compilação cruzada do novo emissor com o SDK do professor.</li>
+<li>Leitura local anterior preservada.</li>
+<li>Troca real de datagramas em localhost entre emissor C++ e servidor Python, usando um arquivo simulado no lugar do ADC.</li>
+<li>Servidor testado no Ubuntu e no Python do Windows.</li>
+<li>Validação das mensagens, gravação CSV, preservação de CSV existente e aviso de ausência de dados.</li>
+</ul>
+<p>O novo envio <b>STM32 → notebook pela Ethernet foi validado em 29/10/2026</b>: dez amostras reais foram enviadas e recebidas, com os mesmos valores, e gravadas em CSV. A evidência está em <code>evidencias_udp_2026-10-29/</code>. O kit desta sessão foi diferente do teste de 26/10; os canais disponíveis foram conferidos novamente. O teste não constitui calibração do sensor.</p>
+<p>O grupo também relatou resposta condizente ao apagar a luz e repetir a medição em 29/10. Trata-se de verificação qualitativa, sem conversão calibrada para lux.</p>
+<h1><a class="anchor" id="autotoc_md21"></a>
+1. Preparar a rede</h1>
+<p>Conectar a STM32 diretamente à Ethernet do notebook. Usar os endereços da sessão anterior, confirmando que não estão em uso por outros dispositivos:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Equipamento   </th><th class="markdownTableHeadNone">IPv4   </th><th class="markdownTableHeadNone">Máscara    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Notebook, Ethernet   </td><td class="markdownTableBodyNone">192.168.42.10   </td><td class="markdownTableBodyNone">255.255.255.0    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">STM32, eth0   </td><td class="markdownTableBodyNone">192.168.42.2   </td><td class="markdownTableBodyNone">255.255.255.0   </td></tr>
+</table>
+<p>Não é necessário gateway nessa conexão direta. A configuração temporária do Windows usada anteriormente pode ter sido perdida após reiniciar. No terminal da placa, conferir <code>ip addr</code>. No notebook, testar a comunicação.</p>
+<p>O servidor deve receber pela interface do <b>Windows</b> quando a Ethernet pertence ao Windows. O modo NAT padrão do WSL 2 não expõe automaticamente um receptor UDP do Ubuntu à placa externa. O script abaixo usa o Python Windows ao detectar WSL, sem alterar a configuração do WSL.</p>
+<h1><a class="anchor" id="autotoc_md22"></a>
+2. Abrir o servidor no notebook</h1>
+<p>No terminal Ubuntu, dentro da pasta do projeto:</p>
+<div class="fragment"><div class="line">cd /home/felipe/stm32/luminosidade</div>
+<div class="line">bash iniciar_servidor.sh --host 192.168.42.10 --porta 5005</div>
+</div><!-- fragment --><p>É preciso Python 3 instalado no Windows; ele já existe neste computador. O servidor anuncia a porta e o caminho do CSV em <code>logs/</code>. Cada execução cria um nome novo com data UTC. Deixar esse terminal aberto.</p>
+<p>Alternativa em Linux nativo, fora do WSL:</p>
+<div class="fragment"><div class="line">python3 servidor_udp.py --host 192.168.42.10 --porta 5005</div>
+</div><!-- fragment --><p>Se o Windows pedir autorização de firewall para o Python, permitir na rede usada pelo kit. Caso o servidor abra mas não receba, verificar uma regra de entrada UDP para a porta 5005, limitada à Ethernet e ao IP 192.168.42.2. Não é necessário desligar o firewall ou liberar outras portas.</p>
+<p>Se houver erro de endereço não disponível, conferir o IPv4 do notebook. Se a porta estiver ocupada, encerrar outro servidor ou escolher outra porta em ambos os programas. Ctrl+C encerra e mantém o CSV já gravado.</p>
+<h1><a class="anchor" id="autotoc_md23"></a>
+3. Compilar e transferir a nova versão</h1>
+<p>Em outro terminal Ubuntu do projeto:</p>
+<div class="fragment"><div class="line">bash compilar.sh</div>
+<div class="line">scp -O build/luminosidade root@192.168.42.2:/root/luminosidade</div>
+</div><!-- fragment --><p>A nova versão precisa ser copiada: o arquivo antigo na placa não tem UDP. Caso o WSL não alcance a placa, transferir pelo PSCP do Windows, como no teste anterior. Não usar o executável local de simulação na STM32.</p>
+<h1><a class="anchor" id="autotoc_md24"></a>
+4. Executar na placa pelo PuTTY</h1>
+<p>Entrar no Linux do kit, repetindo a inicialização manual do README se necessário. No terminal <b>da STM32</b>, executar:</p>
+<div class="fragment"><div class="line">chmod +x /root/luminosidade</div>
+<div class="line">/root/luminosidade /sys/bus/iio/devices/iio:device0/in_voltage13_raw --udp 192.168.42.10 5005 --grupo grupo_luminosidade</div>
+</div><!-- fragment --><p>O destino deve ser o IP do <b>notebook</b>, não o IP da STM32. Se o canal ADC da montagem mudou, substituir o caminho. O programa continua exibindo as leituras no PuTTY; o servidor deve mostrar os mesmos valores com sequência e horário de recebimento. Cobrir e iluminar o sensor para comparar.</p>
+<p>Para terminar automaticamente após dez amostras:</p>
+<div class="fragment"><div class="line">/root/luminosidade /sys/bus/iio/devices/iio:device0/in_voltage13_raw 10 --udp 192.168.42.10 5005 --grupo grupo_luminosidade</div>
+</div><!-- fragment --><p>Sem <code>--udp</code>, o comando antigo continua válido e somente mostra o ADC.</p>
+<h1><a class="anchor" id="autotoc_md25"></a>
+5. Conferir a evidência</h1>
+<ul>
+<li>Capturar o terminal da placa executando o emissor.</li>
+<li>Capturar o terminal do notebook recebendo as leituras.</li>
+<li>Abrir o CSV indicado e conferir grupo, sensor, valores e sequência.</li>
+<li>Interromper o emissor e observar o aviso de cinco segundos sem leituras.</li>
+<li>Registrar que os dados são contagens do ADC; não chamar de lux.</li>
+</ul>
+<p>Os CSVs ficam ignorados pelo Git para não misturar sessões de testes. A amostra física validada foi selecionada para <code>docs/evidencias_udp_2026-10-29/</code>, com o CSV e o registro textual da execução. Acrescentar capturas próprias dos terminais para a entrega.</p>
+<h1><a class="anchor" id="autotoc_md26"></a>
+Teste automatizado sem placa</h1>
+<p>No Ubuntu:</p>
+<div class="fragment"><div class="line">python3 -m unittest discover -s testes -v</div>
+</div><!-- fragment --><p>O teste de emissor compila o C++ para o notebook e usa sockets UDP reais em localhost. Os testes de receptor também executam no Windows; o teste de compilação Linux é pulado automaticamente nessa plataforma. </p>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

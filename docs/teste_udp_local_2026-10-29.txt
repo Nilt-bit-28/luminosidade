@@ -1,0 +1,30 @@
+Validacao da etapa de servidor - 29/10/2026
+
+Ubuntu WSL 2, Python 3.12.3:
+python3 -m unittest discover -s testes -v
+5 testes passaram:
+- aviso apos cinco segundos sem leituras validas;
+- protecao de arquivo CSV preexistente;
+- emissor C++ e receptor Python com datagramas reais em localhost;
+- validacao de versao, identificador, campos numericos e unidade;
+- descarte de pacote invalido e gravacao da leitura valida em CSV.
+
+No teste integrado, um arquivo simulou o ADC com valor 321. O emissor
+C++ enviou tres datagramas. O CSV recebeu sequencias 0, 1 e 2, grupo
+teste_cpp e valor 321, com horario UTC de recebimento.
+
+Windows, Python 3.13:
+4 testes de servidor/protocolo passaram; o teste de compilacao Linux
+foi pulado, conforme previsto na plataforma Windows.
+
+Tambem verificados:
+- compilacao ARM com o SDK do professor: sucesso;
+- teste local anterior com tres leituras de 1234: sucesso;
+- sintaxe dos scripts Bash: sucesso;
+- iniciar_servidor.sh --help no WSL: chamou corretamente Python Windows;
+- Doxygen: geracao sem avisos.
+
+Limite desta evidencia: os dados do teste UDP foram simulados, sem sensor.
+Posteriormente, o teste fisico STM32 -> notebook pela Ethernet foi realizado
+com sucesso e registrado em docs/evidencias_udp_2026-10-29/. A leitura fisica de 26/10 foi da versao anterior,
+sem envio UDP. Nenhum resultado simulado foi apresentado como medicao real.

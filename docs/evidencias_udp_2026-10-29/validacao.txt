@@ -1,0 +1,40 @@
+Teste fisico UDP realizado em 29/10/2026 (America/Sao_Paulo).
+O CSV usa UTC: o horario registrado em UTC cai em 30/10.
+
+Kit confirmado pelo usuario: diferente do utilizado na primeira etapa.
+Linux STM32MP1 6.9.8 #6, armv7l.
+Emissor STM32: 192.168.42.2.
+Servidor Windows/Python 3.13: 192.168.42.10, UDP 5005.
+Canal utilizado: /sys/bus/iio/devices/iio:device0/in_voltage13_raw.
+
+Comando executado na placa:
+/root/luminosidade_udp /sys/bus/iio/devices/iio:device0/in_voltage13_raw 10 --udp 192.168.42.10 5005 --grupo grupo_luminosidade
+
+Saida do emissor (codigo de saida 0):
+sensor,valor,unidade
+KY018,0,contagem_ADC
+KY018,0,contagem_ADC
+KY018,0,contagem_ADC
+KY018,277,contagem_ADC
+KY018,89,contagem_ADC
+KY018,99,contagem_ADC
+KY018,131,contagem_ADC
+KY018,55,contagem_ADC
+KY018,280,contagem_ADC
+KY018,221,contagem_ADC
+
+Servidor: Total: 10 leituras validas. CSV salvo. Codigo de saida 0.
+Verificacao: sequencias 0 a 9, todos os valores iguais aos do emissor,
+IP de origem e grupo conferidos, horarios UTC crescentes.
+
+O servidor avisou ausencia de leituras enquanto aguardava o emissor e
+retomou a exibicao ao receber os pacotes. Encerrou automaticamente ao
+atingir o limite de dez leituras. Nao ficou um servidor de teste em aberto.
+
+A rede Ethernet do Windows foi configurada temporariamente para
+192.168.42.10/24. A regra de firewall criada permite somente UDP 5005,
+na Ethernet, com origem 192.168.42.2, destino 192.168.42.10 e processo
+Python 3.13 usado no teste. O firewall nao foi desativado.
+
+Limites: essa amostra confirmou comunicacao e gravacao CSV. Nao comprova
+calibracao em lux, repetibilidade do sensor ou garantia de entrega UDP.

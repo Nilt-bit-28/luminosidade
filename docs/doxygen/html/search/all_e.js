@@ -1,8 +1,9 @@
 var searchData=
 [
-  ['para_20a_20placa_0',['Compilar para a placa',['../index.html#autotoc_md7',1,'']]],
-  ['pelo_20git_1',['Entrega pelo Git',['../index.html#autotoc_md14',1,'']]],
-  ['pelo_20ubuntu_2',['Abrir no VS Code pelo Ubuntu',['../index.html#autotoc_md5',1,'']]],
-  ['placa_3',['placa',['../index.html#autotoc_md7',1,'Compilar para a placa'],['../index.html#autotoc_md10',1,'Teste no Ubuntu sem a placa']]],
-  ['preparar_20o_20sdk_20em_20outro_20computador_4',['Preparar o SDK em outro computador',['../index.html#autotoc_md6',1,'']]]
+  ['leitura_20em_2026_2010_202026_0',['Validação da etapa de leitura em 26/10/2026',['../index.html#autotoc_md3',1,'']]],
+  ['ler_1',['ler',['../classSensorLuminosidade.html#adaca2ef0eb4746b1f87875d3deea0799',1,'SensorLuminosidade']]],
+  ['luminosidade_20—_20stm32mp1_20e_20ky_20018_2',['Monitoramento de luminosidade — STM32MP1 e KY-018',['../index.html#autotoc_md0',1,'']]],
+  ['luminosidade_20ky_20018_3',['Monitoramento de luminosidade - KY-018',['../index.html',1,'']]],
+  ['luminosidade_20udp_20v1_4',['Protocolo de luminosidade UDP v1',['../md_docs_2PROTOCOLO__UDP.html',1,'']]],
+  ['luminosidade_2ecpp_5',['luminosidade.cpp',['../luminosidade_8cpp.html',1,'']]]
 ];

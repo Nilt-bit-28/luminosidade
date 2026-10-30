@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Monitoramento de luminosidade - KY-018: Protocolo de luminosidade UDP v1</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Monitoramento de luminosidade - KY-018
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Busca');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrado</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div><div class="header">
+  <div class="headertitle"><div class="title">Protocolo de luminosidade UDP v1</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md18"></a> Uma mensagem CSV ASCII por datagrama IPv4 UDP, com no máximo 512 bytes. Porta padrão: 5005, configurável nos dois programas. O emissor envia uma amostra aproximadamente a cada 500 ms por padrão. A pausa é configurável.</p>
+<div class="fragment"><div class="line">v1,grupo_luminosidade,KY018,0,1234,contagem_ADC,0</div>
+</div><!-- fragment --><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Posição   </th><th class="markdownTableHeadNone">Campo   </th><th class="markdownTableHeadNone">Significado    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">1   </td><td class="markdownTableBodyNone">versão   </td><td class="markdownTableBodyNone">Texto fixo <code>v1</code>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">2   </td><td class="markdownTableBodyNone">grupo   </td><td class="markdownTableBodyNone">1 a 32 letras ASCII, números, <code>_</code> ou <code>-</code>    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">3   </td><td class="markdownTableBodyNone">sensor   </td><td class="markdownTableBodyNone">Texto fixo <code>KY018</code>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">4   </td><td class="markdownTableBodyNone">sequência   </td><td class="markdownTableBodyNone">Número da amostra, iniciando em 0 a cada execução    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">5   </td><td class="markdownTableBodyNone">valor   </td><td class="markdownTableBodyNone">Contagem bruta não negativa do ADC; não é lux    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">6   </td><td class="markdownTableBodyNone">unidade   </td><td class="markdownTableBodyNone">Texto fixo <code>contagem_ADC</code>    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">7   </td><td class="markdownTableBodyNone">tempo_ms   </td><td class="markdownTableBodyNone">Milissegundos desde o início do objeto emissor, não horário civil   </td></tr>
+</table>
+<p>O C++ finaliza a mensagem com uma quebra de linha LF. O receptor também aceita uma mensagem sem LF. Os números são inteiros decimais não negativos; o receptor aceita até 19 dígitos e no máximo 9223372036854775807. O emissor usa o intervalo do tipo <code>long</code> da plataforma para a leitura do ADC.</p>
+<p>O servidor valida os campos e descarta datagramas inválidos sem encerrar. Ele acrescenta ao CSV o horário de recebimento UTC e o IP de origem:</p>
+<div class="fragment"><div class="line">recebido_em_utc,ip_origem,grupo,sensor,sequencia,valor,unidade,tempo_ms</div>
+</div><!-- fragment --><p>O arquivo é atualizado a cada leitura. Cada sessão cria um CSV novo; um nome informado explicitamente com <code>--csv</code> não é sobrescrito se já existir.</p>
+<p>UDP não garante entrega, ordem ou ausência de duplicatas. O servidor registra na ordem de chegada e não elimina duplicatas. Sequências permitem analisar lacunas posteriormente; reiniciar o emissor reinicia a sequência. Enviar com sucesso no C++ significa apenas que o sistema aceitou o datagrama, não que o receptor confirmou a leitura. Não há ACK, autenticação ou criptografia neste protocolo de laboratório em rede local.</p>
+<p>Se passar cinco segundos sem leituras válidas, o servidor mostra um aviso e continua aguardando. Ao receber novamente, retoma a exibição normalmente. </p>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

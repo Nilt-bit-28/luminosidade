@@ -3,14 +3,25 @@ Alunos Afonseca - Garcia - 1º TEN MS PQD Rivero
 
 Projeto de Programação Aplicada: leitura de luminosidade para identificar entrada de luz no invólucro de uma carga. O programa C++ roda no Linux do kit STM32MP1, lê o ADC pela interface IIO e mostra contagens brutas no terminal em formato CSV.
 
-## Estado da entrega em 26/10/2026
+## Etapa de servidor — preparação em 29/10 para 02/11/2026
+
+O envio UDP em C++ e o servidor Python de terminal/CSV foram acrescentados. A leitura local continua disponível. A nova comunicação passou pelos testes de software no Ubuntu e no Windows e pelo teste físico STM32 → notebook via Ethernet em 29/10: dez leituras enviadas, dez recebidas e salvas em CSV. A evidência está em `docs/evidencias_udp_2026-10-29/`.
+
+- [Passo a passo do servidor](docs/SERVIDOR_UDP.md).
+- [Protocolo UDP v1](docs/PROTOCOLO_UDP.md).
+
+### Verificação de iluminação pelo grupo em 29/10
+
+Após apagar a luz do ambiente e repetir o teste, o grupo relatou uma resposta condizente com a mudança de iluminação. Essa observação é qualitativa: não foi feita calibração em lux nem caracterização metrológica.
+
+## Validação da etapa de leitura em 26/10/2026
 
 - Classe de leitura implementada, com comentários Doxygen e sem variáveis globais.
 - Compilação cruzada realizada com a toolchain do professor.
 - Executável transferido pela Ethernet e executado com sucesso no kit real.
 - O grupo confirmou a visualização das leituras pelo PuTTY.
 - Os valores são contagens do ADC, não lux. A estabilidade, a resposta à luz e a calibração ainda precisam de avaliação.
-- Alarme de abertura, envio UDP e interface gráfica são etapas futuras.
+- O teste físico de 26/10 foi da leitura local, sem UDP. A etapa UDP está descrita acima; alarme de abertura e interface gráfica continuam futuros.
 
 O enunciado refere-se ao kit DK1. A imagem Linux do kit desta sessão contém `stm32mp157c-dk2.dtb`, utilizado no teste. Esse nome não deve ser aplicado automaticamente a outro kit ou imagem.
 
@@ -34,6 +45,9 @@ Alimentar o kit em **PWR_IN** com fonte USB-C adequada de **5 V / 3 A** e cabo c
 | --- | --- |
 | `luminosidade.cpp` | Classes, comentários Doxygen e ponto de entrada |
 | `compilar.sh` | Compila para Linux ARM |
+| `servidor_udp.py` | Recebe UDP, exibe no terminal e salva CSV |
+| `iniciar_servidor.sh` | Inicia o receptor; no WSL utiliza Python Windows para receber pela Ethernet |
+| `testes/` | Testes de protocolo, CSV e comunicação UDP |
 | `ambiente.sh` | Configura o caminho do SDK e suas bibliotecas |
 | `cxx.sh` | Permite ao editor consultar o compilador no ambiente correto |
 | `testar_no_ubuntu.sh` | Teste local com arquivo simulado |
@@ -45,6 +59,10 @@ Alimentar o kit em **PWR_IN** com fonte USB-C adequada de **5 V / 3 A** e cabo c
 **SensorLuminosidade:** guarda privadamente o caminho do arquivo ADC. Seu construtor recebe o caminho; `long ler() const` abre o arquivo, lê e retorna a contagem. Falha de leitura ou valor negativo gera `std::runtime_error`. O arquivo é reaberto a cada chamada e fechado automaticamente.
 
 **Aplicacao:** o método estático `executar(argc, argv)` verifica argumentos, cria o sensor, solicita leituras e imprime resultados. Entre as leituras há uma pausa de 500 ms; após a última amostra limitada não há pausa. Exceções são capturadas e mostradas. Retorno 0 indica sucesso; retorno 1 indica falha.
+
+**Configuracao:** valida e encapsula argumentos, quantidade de amostras, intervalo, destino UDP e grupo.
+
+**EnviadorUDP:** gerencia o socket e envia cada leitura em um datagrama CSV v1; fecha o recurso automaticamente.
 
 **main():** apenas delega a execução à classe Aplicacao.
 
@@ -158,7 +176,7 @@ KY018,0,contagem_ADC
 KY018,182,contagem_ADC
 ```
 
-Essa é uma saída local de terminal, ainda sem transmissão UDP.
+Essa amostra foi obtida no modo local de 26/10. A nova opção `--udp IP PORTA` transmite cada leitura conforme o protocolo v1 documentado em `docs/PROTOCOLO_UDP.md`.
 
 ## Teste no Ubuntu sem a placa
 

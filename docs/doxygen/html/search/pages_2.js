@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ky_20018_0',['Monitoramento de luminosidade - KY-018',['../index.html',1,'']]]
+  ['2026_0',['Etapa de servidor — preparação para 02/11/2026',['../md_docs_2SERVIDOR__UDP.html',1,'']]]
 ];

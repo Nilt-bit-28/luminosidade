@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['main_0',['main',['../luminosidade_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'luminosidade.cpp']]],
-  ['manual_20utilizada_20no_20teste_1',['Inicialização manual utilizada no teste',['../index.html#autotoc_md12',1,'']]],
-  ['monitoramento_20de_20luminosidade_20—_20stm32mp1_20e_20ky_20018_2',['Monitoramento de luminosidade — STM32MP1 e KY-018',['../index.html#autotoc_md0',1,'']]],
-  ['monitoramento_20de_20luminosidade_20ky_20018_3',['Monitoramento de luminosidade - KY-018',['../index.html',1,'']]]
+  ['git_0',['Entrega pelo Git',['../index.html#autotoc_md16',1,'']]],
+  ['grupo_1',['grupo',['../classConfiguracao.html#a98289d4e30f7f1b322d398f91b2df820',1,'Configuracao']]],
+  ['grupo_20em_2029_2010_2',['Verificação de iluminação pelo grupo em 29/10',['../index.html#autotoc_md2',1,'']]],
+  ['grupo_5f_3',['grupo_',['../classConfiguracao.html#a32aa23ffbe841d7c9ef5cb7a7326af64',1,'Configuracao::grupo_'],['../classEnviadorUDP.html#ae30d0b5fd3961dea5de3ee47720db49c',1,'EnviadorUDP::grupo_']]]
 ];

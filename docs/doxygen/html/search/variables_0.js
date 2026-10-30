@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['caminho_5f_0',['caminho_',['../classSensorLuminosidade.html#aab29dbe8b4285615d1e371e2ad4063fd',1,'SensorLuminosidade']]]
+  ['amostras_5f_0',['amostras_',['../classConfiguracao.html#a6b7496efc29db69bd1e0e288beb7b4c8',1,'Configuracao']]]
 ];

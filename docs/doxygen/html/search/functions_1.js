@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['ler_0',['ler',['../classSensorLuminosidade.html#adaca2ef0eb4746b1f87875d3deea0799',1,'SensorLuminosidade']]]
+  ['caminho_0',['caminho',['../classConfiguracao.html#a6ec6fd8216b7700079ae07ba7ffebd4b',1,'Configuracao']]],
+  ['configuracao_1',['Configuracao',['../classConfiguracao.html#a32c2b8429049237321e3b31bdb56ac41',1,'Configuracao']]]
 ];
